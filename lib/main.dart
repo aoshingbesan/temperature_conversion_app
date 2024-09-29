@@ -28,6 +28,7 @@ class _TemperatureConverterState extends State<TemperatureConverter> {
   String _result = '';
   List<String> _history = [];
 
+  // Convert the temperature and update the UI
   void _convert() {
     if (_temperatureController.text.isEmpty) return;
 
@@ -35,6 +36,7 @@ class _TemperatureConverterState extends State<TemperatureConverter> {
     double convertedTemp;
     String operation;
 
+    // Apply conversion formula based on selected direction
     if (isFahrenheitToCelsius) {
       convertedTemp = (inputTemp - 32) * 5 / 9;
       operation = 'F to C';
@@ -43,6 +45,7 @@ class _TemperatureConverterState extends State<TemperatureConverter> {
       operation = 'C to F';
     }
 
+    // Update state and add to conversion history
     setState(() {
       _result = convertedTemp.toStringAsFixed(2);
       _history.insert(0, '$operation: ${inputTemp.toStringAsFixed(1)} => $_result');
